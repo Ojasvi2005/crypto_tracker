@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             alertMessage.textContent = `Alert: ${selectedCryptoName} has reached or surpassed $${alertPrice}`;
             alertMessage.style.display = "block";  // Ensure the alert is shown
         } else {
-            alertMessage.style.display = "none";  // Hide it when not triggered
+            alertMessage.style.display = alertPrice && price >= alertPrice ? "block" : "none";
+ // Hide it when not triggered
         }
     }
 
@@ -65,10 +66,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             alertMessage.textContent = "Please enter a valid alert price.";
             return;
         }
-        alertMessage.textContent = `Alert set at $${alertPrice.toFixed(2)}`;
+        alertMessage.textContent = `🔔 Alert set at $${alertPrice.toFixed(2)}`;
+        alertMessage.style.display = "block";
+
     });
 
-    setInterval(async () => {
+    async function updateCryptoPrice() {
         if (!selectedCryptoId || !alertPrice) return;
 
         try {
@@ -86,5 +89,5 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error("Error checking cryptocurrency price:", error);
             errorMessage.textContent = "Error checking cryptocurrency price.";
         }
-    }, 10000);
-});
+    }
+setInterval(updateCryptoPrice, 10000);
