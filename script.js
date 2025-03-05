@@ -90,4 +90,4 @@ document.addEventListener("DOMContentLoaded", async () => {
             errorMessage.textContent = "Error checking cryptocurrency price.";
         }
     }
-setInterval(updateCryptoPrice, 10000);
+setInterval(updateCryptoPrice, 10000);})
