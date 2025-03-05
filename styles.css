@@ -51,7 +51,9 @@ select {
     padding: 10px;
     border-radius: 6px;
     margin-top: 10px;
-    display:none;
+    display: none;
+    font-weight: bold;
+    text-align: center;
 }
 
 /* Responsive Design */
